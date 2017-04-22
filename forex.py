@@ -32,7 +32,7 @@ for i in range(27):
 
 time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 res.append(time)
-
+print time
 # print res
 
 import MySQLdb
@@ -49,13 +49,13 @@ conn = MySQLdb.Connect(
     )
 cursor = conn.cursor()
 # sql1 = "INSERT INTO forex(AED,AUD) VALUES (%s,%s)" %(41,42)
-sql="INSERT INTO forex(AED,AUD,BRL,CAD,CHF,DKK,EUR,GBP,HKD,IDR,INR,JPY,KRW,MOP,MYR,NOK,NZD,PHP,RUB,SAR,SEG,SGD,THB,TRY,TWD,USD,ZAR) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)" % (res[0],res[1],res[2],res[3],res[4],res[5],res[6],res[7],res[8],res[9],res[10],res[11],res[12],res[13],res[14],res[15],res[16],res[17],res[18],res[19],res[20],res[21],res[22],res[23],res[24],res[25],res[26])
+sql="INSERT INTO forex(AED,AUD,BRL,CAD,CHF,DKK,EUR,GBP,HKD,IDR,INR,JPY,KRW,MOP,MYR,NOK,NZD,PHP,RUB,SAR,SEG,SGD,THB,TRY,TWD,USD,ZAR,TIME1) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,'%s')" % (res[0],res[1],res[2],res[3],res[4],res[5],res[6],res[7],res[8],res[9],res[10],res[11],res[12],res[13],res[14],res[15],res[16],res[17],res[18],res[19],res[20],res[21],res[22],res[23],res[24],res[25],res[26],time)
 
 #% (res[0],res[1],res[2],res[3],res[4],res[5],res[6],res[7],res[8],res[9],res[10],res[11],res[12],res[13],res[14],res[15],res[16],res[17],res[18],res[19],res[20],res[21],res[22],res[23],res[24],res[25],res[26],res[27],res[28])
 
 cursor.execute(sql)
 print cursor.rowcount
-rs= cursor.fetchone()
+rs = cursor.fetchone()
 print rs
 
 
